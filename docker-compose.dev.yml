@@ -2,4 +2,6 @@ services:
   web:
     command: tail -F dummy
     volumes:
-      - .:/kesh
+      - source:/cash_flow_admin
+volumes:
+  source:
