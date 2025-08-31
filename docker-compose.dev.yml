@@ -1,0 +1,5 @@
+services:
+  web:
+    command: tail -F dummy
+    volumes:
+      - .:/kesh
