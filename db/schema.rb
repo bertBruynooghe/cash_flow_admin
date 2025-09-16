@@ -10,11 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_09_15_164452) do
+ActiveRecord::Schema[8.0].define(version: 2025_09_16_062819) do
   create_table "bank_accounts", force: :cascade do |t|
     t.string "name"
     t.string "account_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "recurring_transactions", force: :cascade do |t|
+    t.decimal "amount"
+    t.string "interval"
+    t.date "start_date"
+    t.string "name"
+    t.text "description"
+    t.integer "bank_account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bank_account_id"], name: "index_recurring_transactions_on_bank_account_id"
+  end
+
+  add_foreign_key "recurring_transactions", "bank_accounts"
 end
